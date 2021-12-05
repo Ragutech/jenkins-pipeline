@@ -16,20 +16,35 @@ pipeline {
     	    parallel{
     	        
     	        stage('Static Code Analysis'){
+    	        
+    	        	steps{
+    	        	
+    	        		echo 'Performing Static Code Analysis'
+    	        	    
+    	        	}
+
     	                     
-    	             echo 'Performing Static Code Analysis'        
+    	                     
     	                     
     	        }
 
 				stage('Fortify Vulnerability Scan'){
 				
+					steps{
+				
 					echo 'Performing Fortify Vulnerability Scan'
+					
+					}
     	                          
     	        }
     	        
     	        stage('API Security Scan'){
     	        
+    	        	steps{
+    	        
     	        	echo 'Performing API Security Scan'
+    	        	
+    	        	}
     	        
     	                          
     	        }
