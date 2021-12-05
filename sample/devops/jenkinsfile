@@ -1,0 +1,14 @@
+pipeline {
+    agent { 
+    	node {
+ 			label 'RaguAWS'
+    		 }
+ 	}
+    stages {
+        stage('Build') {
+            steps {
+                sh 'python --version'
+            }
+        }
+    }
+}
