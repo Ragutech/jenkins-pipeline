@@ -11,6 +11,35 @@ pipeline {
     	    }
     	    
     	}
+    	stage('Security Gate'){
+    	    
+    	    parallel{
+    	        
+    	        stage('Static Code Analysis'){
+    	                     
+    	             echo 'Performing Static Code Analysis'        
+    	                     
+    	        }
+
+				stage('Fortify Vulnerability Scan'){
+				
+					echo 'Performing Fortify Vulnerability Scan'
+    	                          
+    	        }
+    	        
+    	        stage('API Security Scan'){
+    	        
+    	        	echo 'Performing API Security Scan'
+    	        
+    	                          
+    	        }
+    	        
+    	    }
+
+    	    
+    	    
+    	}
+
         stage('Build') {
             steps {
                 sh 'python --version'
