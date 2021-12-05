@@ -5,6 +5,12 @@ pipeline {
     		 }
  	}
     stages {
+    	stage('SCM Checkout'){
+    	    steps{
+    	    	git credentialsId: 'ragugithub', url: 'https://github.com/Ragutech/spring-boot-rest-example.git'
+    	    }
+    	    
+    	}
         stage('Build') {
             steps {
                 sh 'python --version'
