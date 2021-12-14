@@ -9,56 +9,12 @@ pipeline {
     	    steps{
     	    	git credentialsId: 'ragugithub', url: 'https://github.com/Ragutech/spring-boot-rest-example.git'
     	    }
-    	    
     	}
-    	stage('Security Gate'){
-    	    
-    	    parallel{
-    	        
-    	        stage('Static Code Analysis'){
-    	        
-    	        	steps{
-    	        	
-    	        		echo 'Performing Static Code Analysis'
-    	        	    
-    	        	}
-
-    	                     
-    	                     
-    	                     
-    	        }
-
-				stage('Fortify Vulnerability Scan'){
-				
-					steps{
-				
-					echo 'Performing Fortify Vulnerability Scan'
-					
-					}
-    	                          
-    	        }
-    	        
-    	        stage('API Security Scan'){
-    	        
-    	        	steps{
-    	        
-    	        	echo 'Performing API Security Scan'
-    	        	
-    	        	}
-    	        
-    	                          
-    	        }
-    	        
+    	stage("ansible execute"){
+    	    steps{
+    	        ansiblePlaybook credentialsId: 'ec2-user', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'localhost', playbook: '/playbooks/java.yml'
     	    }
-
-    	    
-    	    
     	}
-
-        stage('Build') {
-            steps {
-                sh 'python --version'
-            }
-        }
     }
 }
+    	
